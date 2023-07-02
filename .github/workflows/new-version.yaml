@@ -25,12 +25,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Read package.json
-        uses: dutscher/read-package-json-endpoint-actions@v1.33.7
-        id: package-json
-
       - name: Show version number
-        run: echo "${{ steps.package-json.outputs.version }}"
+        run: echo "${{ steps.releaser.outputs.currentVersion }}"
 
       - name: Creating a new release on Github
         uses: softprops/action-gh-release@v1
