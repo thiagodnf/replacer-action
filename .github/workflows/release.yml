@@ -15,9 +15,7 @@ jobs:
         with:
           node-version: 18
 
-      - run: ls
-
-      - run: npm ci
+      - run: npm install
 
       - uses: thiagodnf/replacer-action@main
         with:
