@@ -1,4 +1,6 @@
-# Create a JavaScript Action
+# Replacer Action
+
+A GitHub Action for finding and replacing strings in your project files
 
 <p align="center">
   <a href="https://github.com/actions/javascript-action/actions"><img alt="javscript-action status" src="https://github.com/actions/javascript-action/workflows/units-test/badge.svg"></a>

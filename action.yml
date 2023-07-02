@@ -1,13 +1,24 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: Replacer Action
+description: A GitHub Action for finding and replacing strings in your project files
+author: Thiago Ferreira
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  include:
+    description: "A glob of files to include in our find and replace"
+    required: false
+    default: "**" # Include everything by default
+  exclude:
+    description: "A glob of files to exclude in our find and replace"
+    default: ".git/**" # Ignore the `.git` directory by default
+    required: false
+  find:
+    description: "The regular expression you want to be replaced"
     required: true
-    default: '1000'
+  replace:
+    description: "The new string to be replaced"
+    required: true
 outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  modifiedFiles:
+    description: The number of files which have been modified
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "node16"
+  main: "dist/index.js"
