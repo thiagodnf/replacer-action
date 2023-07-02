@@ -10614,7 +10614,7 @@ async function run() {
     const replace = ActionUtils.getInput("replace", { required: true });
 
     core.info(`include: ${include}`);
-    core.info(`exclude: ${exclude}`);
+    core.info(`exclude: ${JSON.stringify(exclude)}`);
     core.info(`find: ${find}`);
     core.info(`replace: ${replace}`);
 
