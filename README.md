@@ -45,7 +45,7 @@ jobs:
       - uses: actions/checkout@main
      
       - name: Find and Replace
-        uses: thiagodnf/replacer-action@v1
+        uses: thiagodnf/replacer-github-action@v1
         with:
           find: "hello"
           replace: "world"
