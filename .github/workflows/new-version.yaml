@@ -1,0 +1,28 @@
+name: New Version
+
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: New Version
+        default: 1.0.0
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+
+      - name: Checking out
+        uses: actions/checkout@v3
+
+      - name: Creating a new release on Github
+        uses: softprops/action-gh-release@v1
+        with:
+          name: v${{ github.event.inputs.version }}
+          tag_name: v${{ github.event.inputs.version }}
+          files: "*"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
