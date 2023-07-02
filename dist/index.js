@@ -10631,7 +10631,6 @@ async function run() {
     let exclude = ActionUtils.getInputAsArray("exclude", { required: false });
 
     find = new RegExp(find, 'gm');
-    replace = new RegExp(replace, 'gm');
     include = ArrayUtils.split(include, ",");
     exclude = ArrayUtils.split(exclude, ",");
 
