@@ -21,6 +21,10 @@ jobs:
         with:
           find: bar
           replace: foo
+          include: |
+            src/**, README.md
+            test/**
+
           exclude: |
             .git/**, README.md
-            node_modules/**
+            ActionUtils.js
