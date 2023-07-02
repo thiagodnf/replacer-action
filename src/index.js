@@ -18,7 +18,7 @@ async function run() {
     core.info(`find: ${find}`);
     core.info(`replace: ${replace}`);
 
-    const files = FileUtils.searchFiles(include);
+    const files = FileUtils.searchFiles(include, exclude);
 
     core.info(`Found ${files.size} file(s). Checking them:`);
 

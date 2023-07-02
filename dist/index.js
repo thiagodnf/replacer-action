@@ -3752,10 +3752,11 @@ module.exports = class FileUtils {
         return files;
     }
 
-    static searchFiles(pattern) {
+    static searchFiles(pattern, ignore) {
 
         const options = {
-            cwd: FileUtils.getWorkspacePath()
+            cwd: FileUtils.getWorkspacePath(),
+            ignore: ignore
         };
 
         return glob.sync(pattern, options);
@@ -10617,7 +10618,7 @@ async function run() {
     core.info(`find: ${find}`);
     core.info(`replace: ${replace}`);
 
-    const files = FileUtils.searchFiles(include);
+    const files = FileUtils.searchFiles(include, exclude);
 
     core.info(`Found ${files.size} file(s). Checking them:`);
 

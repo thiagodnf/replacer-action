@@ -42,10 +42,11 @@ module.exports = class FileUtils {
         return files;
     }
 
-    static searchFiles(pattern) {
+    static searchFiles(pattern, ignore) {
 
         const options = {
-            cwd: FileUtils.getWorkspacePath()
+            cwd: FileUtils.getWorkspacePath(),
+            ignore: ignore
         };
 
         return glob.sync(pattern, options);
