@@ -19,12 +19,7 @@ jobs:
 
       - uses: thiagodnf/replacer-action@main
         with:
-          find: bar
-          replace: foo
+          find: "@version"
+          replace: "@2.2"
           include: |
-            src/**, README.md
-            test/**
-
-          exclude: |
-            .git/**, README.md
-            **/ActionUtils.js
+            test_resources/**/*.md

@@ -25,7 +25,7 @@ async function run() {
 
     const files = FileUtils.searchFiles(include, exclude);
 
-    core.info(`Found ${files.length} file(s). Checking them:`);
+    core.info(`Found ${files.length} file(s). Checking them out:`);
 
     let modifiedFiles = 0;
 
@@ -33,6 +33,13 @@ async function run() {
 
         core.info(`Processing: ${file}`);
 
+        let content = FileUtils.getContent(file);
+
+        content = content.replace(find, replace);
+
+        core.info(`content: ${content}`);
+        
+        FileUtils.writeContent(file, content);
     });
 
     core.info("Done. All files checked");

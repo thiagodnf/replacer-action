@@ -3798,11 +3798,18 @@ module.exports = class FileUtils {
         return fs.readdirSync(path).length === 0;
     }
 
-    static getContent(file, encoding = "utf-8") {
+    static readContent(file, encoding = "utf-8") {
 
         const filePath = path.join(FileUtils.getWorkspacePath(), file);
 
         return fs.readFileSync(filePath, { encoding });
+    }
+
+    static writeContent(file, content, encoding = "utf-8") {
+
+        const filePath = path.join(FileUtils.getWorkspacePath(), file);
+
+        return fs.writeFileSync(filePath, content, encoding);
     }
 }
 
@@ -10652,7 +10659,7 @@ async function run() {
 
     const files = FileUtils.searchFiles(include, exclude);
 
-    core.info(`Found ${files.length} file(s). Checking them:`);
+    core.info(`Found ${files.length} file(s). Checking them out:`);
 
     let modifiedFiles = 0;
 
@@ -10660,6 +10667,13 @@ async function run() {
 
         core.info(`Processing: ${file}`);
 
+        let content = FileUtils.getContent(file);
+
+        content = content.replace(find, replace);
+
+        core.info(`content: ${content}`);
+        
+        FileUtils.writeContent(file, content);
     });
 
     core.info("Done. All files checked");

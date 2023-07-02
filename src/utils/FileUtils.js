@@ -61,10 +61,17 @@ module.exports = class FileUtils {
         return fs.readdirSync(path).length === 0;
     }
 
-    static getContent(file, encoding = "utf-8") {
+    static readContent(file, encoding = "utf-8") {
 
         const filePath = path.join(FileUtils.getWorkspacePath(), file);
 
         return fs.readFileSync(filePath, { encoding });
+    }
+
+    static writeContent(file, content, encoding = "utf-8") {
+
+        const filePath = path.join(FileUtils.getWorkspacePath(), file);
+
+        return fs.writeFileSync(filePath, content, encoding);
     }
 }
