@@ -10660,6 +10660,7 @@ async function run() {
 
         FileUtils.writeContent(file, newContent);
     });
+    core.info(`modifiedFiles: ${modifiedFiles}`);
 
     core.info("Done. All files checked");
 
