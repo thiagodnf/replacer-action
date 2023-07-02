@@ -1,4 +1,4 @@
-name: Replacer GitHub Action
+name: String Replacer
 description: A GitHub Action for finding and replacing strings in your project files
 author: Thiago Ferreira
 branding:
