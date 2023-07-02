@@ -66,18 +66,4 @@ module.exports = class FileUtils {
 
         return fs.readFileSync(filePath, { encoding });
     }
-
-    static getContentFromJson(file, encoding = "utf-8") {
-
-        const content = FileUtils.getContent(file, encoding);
-
-        return StringUtils.parseJson(file, content);
-    }
-
-    static getContentFromYaml(file, encoding = "utf-8") {
-
-        const content = FileUtils.getContent(file, encoding);
-
-        return StringUtils.parseYaml(file, content);
-    }
 }
