@@ -6,22 +6,22 @@ branding:
   color: purple
 inputs:
   find:
-    description: "The regular expression you want to be replaced"
+    description: The regular expression you want to be replaced
     required: true
   replace:
-    description: "The new string to be replaced"
+    description: The new string to be replaced
     required: true
   include:
-    description: "A glob of files to include in our find and replace"
+    description: A glob of files to include in our find and replace
     required: false
     default: "**" # Include everything by default
   exclude:
-    description: "A glob of files to exclude in our find and replace"
+    description: A glob of files to exclude in our find and replace
     default: ".git/**" # Ignore the `.git` directory by default
     required: false
 outputs:
   modifiedFiles:
     description: The number of files which have been modified
 runs:
-  using: "node16"
+  using: node16
   main: "dist/index.js"
