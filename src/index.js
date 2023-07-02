@@ -33,7 +33,7 @@ async function run() {
 
         core.info(`Processing: ${file}`);
 
-        let content = FileUtils.getContent(file);
+        let content = FileUtils.readContent(file);
 
         content = content.replace(find, replace);
 
