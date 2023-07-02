@@ -19,7 +19,7 @@ jobs:
 
       - uses: thiagodnf/replacer-action@main
         with:
-          find: "/@version/gm"
+          find: "@version"
           replace: "@2.2"
           include: |
             test_resources/**/*.md

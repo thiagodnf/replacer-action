@@ -3735,7 +3735,6 @@ module.exports = class ArrayUtils {
 /***/ 4056:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const core = __nccwpck_require__(2186);
 const fs = __nccwpck_require__(7147);
 const path = __nccwpck_require__(1017);
 const process = __nccwpck_require__(7282);
@@ -3756,24 +3755,6 @@ module.exports = class FileUtils {
     static exists(fileOrPath) {
 
         return fs.existsSync(fileOrPath);
-    }
-
-    static loadFiles(patterns = [], ignore = []) {
-
-        core.debug("Loading all files");
-
-        const files = new Set();
-
-        patterns.forEach(pattern => {
-
-            core.debug(`Processing: ${pattern}`);
-
-            FileUtils.searchFiles(pattern, ignore).forEach(file => {
-                files.add(file);
-            });
-        });
-
-        return files;
     }
 
     static searchFiles(pattern = [], ignore = []) {
@@ -10649,8 +10630,8 @@ async function run() {
     let include = ActionUtils.getInputAsArray("include", { required: false });
     let exclude = ActionUtils.getInputAsArray("exclude", { required: false });
 
-    find = new RegExp(find);
-    replace = new RegExp(replace);
+    find = new RegExp(find, 'gm');
+    replace = new RegExp(replace, 'gm');
     include = ArrayUtils.split(include, ",");
     exclude = ArrayUtils.split(exclude, ",");
 

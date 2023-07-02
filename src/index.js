@@ -15,8 +15,8 @@ async function run() {
     let include = ActionUtils.getInputAsArray("include", { required: false });
     let exclude = ActionUtils.getInputAsArray("exclude", { required: false });
 
-    find = new RegExp(find);
-    replace = new RegExp(replace);
+    find = new RegExp(find, 'gm');
+    replace = new RegExp(replace, 'gm');
     include = ArrayUtils.split(include, ",");
     exclude = ArrayUtils.split(exclude, ",");
 

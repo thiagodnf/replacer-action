@@ -1,4 +1,3 @@
-const core = require("@actions/core");
 const fs = require("fs");
 const path = require("path");
 const process = require("process");
@@ -19,24 +18,6 @@ module.exports = class FileUtils {
     static exists(fileOrPath) {
 
         return fs.existsSync(fileOrPath);
-    }
-
-    static loadFiles(patterns = [], ignore = []) {
-
-        core.debug("Loading all files");
-
-        const files = new Set();
-
-        patterns.forEach(pattern => {
-
-            core.debug(`Processing: ${pattern}`);
-
-            FileUtils.searchFiles(pattern, ignore).forEach(file => {
-                files.add(file);
-            });
-        });
-
-        return files;
     }
 
     static searchFiles(pattern = [], ignore = []) {
