@@ -35,12 +35,15 @@ async function run() {
         core.info(`Processing: ${file}`);
 
         let content = FileUtils.readContent(file);
+        let newContent = content.replace(find, replace);
 
-        content = content.replace(find, replace);
+        if (content != newContent) {
+            modifiedFiles++;
+        }
 
-        core.info(`content: ${content}`);
+        core.info(`content: ${newContent}`);
 
-        FileUtils.writeContent(file, content);
+        FileUtils.writeContent(file, newContent);
     });
 
     core.info("Done. All files checked");
