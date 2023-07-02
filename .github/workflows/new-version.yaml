@@ -16,21 +16,33 @@ jobs:
       - name: Checking out
         uses: actions/checkout@v3
 
-      - id: releaser
-        name: New Version Decider
-        uses: thiagodnf/new-version-decider@v0.0.5
+
+      - id: version-monitor
+        name: Version Monitor
+        uses: thiagodnf/version-monitor@main
         with:
-          loader: nodejs
-          configurationFile: ./package.json
+          file: ./package.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: echo ${{steps.version-monitor.outputs.version}}
+      - run: echo ${{steps.version-monitor.outputs.release}}
+
+      # - id: releaser
+      #   name: New Version Decider
+      #   uses: thiagodnf/new-version-decider@v0.0.5
+      #   with:
+      #     loader: nodejs
+      #     configurationFile: ./package.json
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
 
-      - name: Creating a new release on Github
-        uses: softprops/action-gh-release@v1
-        if: steps.releaser.outputs.newVersion == 'true'
-        with:
-          name: v${{ steps.releaser.outputs.currentVersion }}
-          tag_name: v${{ steps.releaser.outputs.currentVersion }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Creating a new release on Github
+      #   uses: softprops/action-gh-release@v1
+      #   if: steps.releaser.outputs.newVersion == 'true'
+      #   with:
+      #     name: v${{ steps.releaser.outputs.currentVersion }}
+      #     tag_name: v${{ steps.releaser.outputs.currentVersion }}
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
