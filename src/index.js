@@ -18,7 +18,7 @@ async function run() {
     include = ArrayUtils.split(include, ",");
     exclude = ArrayUtils.split(exclude, ",");
 
-    core.info(`include: ${include}`);
+    core.info(`include: ${JSON.stringify(include)}`);
     core.info(`exclude: ${JSON.stringify(exclude)}`);
     core.info(`find: ${find}`);
     core.info(`replace: ${replace}`);
