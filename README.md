@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@main
      
       - name: Find and Replace
         uses: thiagodnf/replacer-action@v3
