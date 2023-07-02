@@ -1,4 +1,4 @@
-<img src="https://github.com/thiagodnf/yaml-schema-checker/assets/114015/b5b91b72-882d-489e-8d11-7d93f0d01c9a" width="200"/>
+<img src="https://github.com/thiagodnf/yaml-schema-checker/assets/114015/b5b91b72-882d-489e-8d11-7d93f0d01c9a" width="400"/>
 
 A GitHub Action for finding and replacing strings in your project files
 
