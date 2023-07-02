@@ -8,6 +8,26 @@ A GitHub Action for finding and replacing strings in your project files
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
+## Input
+
+### `find`
+**Required** The regular expression you want to be replaced
+
+### `replace`
+**Required** The new string to be replaced
+
+### `include`
+**Optional** A glob of files to include in our find and replace. Default is `**`
+
+### `exclude`
+**Optional** A glob of files to exclude in our find and replace. Default is `.git/**`
+
+## Outputs
+
+### `modifiedFiles`
+
+The number of files which have been modified
+
 ## Usage
 
 ### Example workflow
