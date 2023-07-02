@@ -21,20 +21,17 @@ module.exports = class FileUtils {
         return fs.existsSync(fileOrPath);
     }
 
-    static loadFiles(array = []) {
+    static loadFiles(patterns = [], ignore = []) {
 
         core.debug("Loading all files");
 
         const files = new Set();
 
-        array.forEach(el => {
+        patterns.forEach(pattern => {
 
-            core.debug(`Processing: ${el}`);
+            core.debug(`Processing: ${pattern}`);
 
-            FileUtils.searchFiles(el).forEach(file => {
-
-                core.debug(`Adding file: ${file}`);
-
+            FileUtils.searchFiles(pattern, ignore).forEach(file => {
                 files.add(file);
             });
         });
@@ -42,7 +39,10 @@ module.exports = class FileUtils {
         return files;
     }
 
-    static searchFiles(pattern, ignore) {
+    static searchFiles(pattern = [], ignore = []) {
+
+        pattern = Array.isArray(pattern) ? pattern : [pattern];
+        ignore = Array.isArray(ignore) ? ignore : [ignore];
 
         const options = {
             cwd: FileUtils.getWorkspacePath(),

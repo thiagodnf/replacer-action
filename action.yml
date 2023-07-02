@@ -2,6 +2,12 @@ name: Replacer Action
 description: A GitHub Action for finding and replacing strings in your project files
 author: Thiago Ferreira
 inputs:
+  find:
+    description: "The regular expression you want to be replaced"
+    required: true
+  replace:
+    description: "The new string to be replaced"
+    required: true
   include:
     description: "A glob of files to include in our find and replace"
     required: false
@@ -10,12 +16,6 @@ inputs:
     description: "A glob of files to exclude in our find and replace"
     default: ".git/**" # Ignore the `.git` directory by default
     required: false
-  find:
-    description: "The regular expression you want to be replaced"
-    required: true
-  replace:
-    description: "The new string to be replaced"
-    required: true
 outputs:
   modifiedFiles:
     description: The number of files which have been modified

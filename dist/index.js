@@ -3758,20 +3758,17 @@ module.exports = class FileUtils {
         return fs.existsSync(fileOrPath);
     }
 
-    static loadFiles(array = []) {
+    static loadFiles(patterns = [], ignore = []) {
 
         core.debug("Loading all files");
 
         const files = new Set();
 
-        array.forEach(el => {
+        patterns.forEach(pattern => {
 
-            core.debug(`Processing: ${el}`);
+            core.debug(`Processing: ${pattern}`);
 
-            FileUtils.searchFiles(el).forEach(file => {
-
-                core.debug(`Adding file: ${file}`);
-
+            FileUtils.searchFiles(pattern, ignore).forEach(file => {
                 files.add(file);
             });
         });
@@ -3779,7 +3776,10 @@ module.exports = class FileUtils {
         return files;
     }
 
-    static searchFiles(pattern, ignore) {
+    static searchFiles(pattern = [], ignore = []) {
+
+        pattern = Array.isArray(pattern) ? pattern : [pattern];
+        ignore = Array.isArray(ignore) ? ignore : [ignore];
 
         const options = {
             cwd: FileUtils.getWorkspacePath(),
@@ -10626,6 +10626,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const core = __nccwpck_require__(2186);
+
 const FileUtils = __nccwpck_require__(4056);
 const ActionUtils = __nccwpck_require__(778);
 const ArrayUtils = __nccwpck_require__(1970);
@@ -10636,11 +10637,12 @@ async function run() {
         throw new Error("Workspace is empty. Did you forget to run \"actions/checkout\" before running this Github Action?");
     }
 
-    let include = ActionUtils.getInputAsArray("include", { required: false });
-    let exclude = ActionUtils.getInputAsArray("exclude", { required: false });
     let find = ActionUtils.getInput("find", { required: true });
     let replace = ActionUtils.getInput("replace", { required: true });
+    let include = ActionUtils.getInputAsArray("include", { required: false });
+    let exclude = ActionUtils.getInputAsArray("exclude", { required: false });
 
+    include = ArrayUtils.split(include, ",");
     exclude = ArrayUtils.split(exclude, ",");
 
     core.info(`include: ${include}`);
@@ -10650,7 +10652,7 @@ async function run() {
 
     const files = FileUtils.searchFiles(include, exclude);
 
-    core.info(`Found ${files.size} file(s). Checking them:`);
+    core.info(`Found ${files.length} file(s). Checking them:`);
 
     let modifiedFiles = 0;
 
