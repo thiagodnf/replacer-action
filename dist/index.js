@@ -3731,7 +3731,7 @@ module.exports = class FileUtils {
         return fs.existsSync(fileOrPath);
     }
 
-    static loadFiles(array) {
+    static loadFiles(array = []) {
 
         core.debug("Loading all files");
 
@@ -10612,7 +10612,12 @@ async function run() {
     const find = ActionUtils.getInput("find", { required: true });
     const replace = ActionUtils.getInput("replace", { required: true });
 
-    const files = FileUtils.loadFiles(include);
+    core.info(`include: ${include}`);
+    core.info(`exclude: ${exclude}`);
+    core.info(`find: ${find}`);
+    core.info(`replace: ${replace}`);
+
+    const files = FileUtils.searchFiles(include);
 
     core.info(`Found ${files.size} file(s). Checking them:`);
 
