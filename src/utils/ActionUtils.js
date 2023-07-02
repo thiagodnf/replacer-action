@@ -4,7 +4,7 @@ module.exports = class ActionUtils {
 
     static getInputAsArray(name, options) {
 
-        return core
+        return ActionUtils
             .getInput(name, options)
             .split("\n")
             .map(s => s.trim())

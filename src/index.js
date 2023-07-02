@@ -1,6 +1,7 @@
 const core = require("@actions/core");
 const FileUtils = require("./utils/FileUtils");
 const ActionUtils = require("./utils/ActionUtils");
+const ArrayUtils = require("./utils/ArrayUtils");
 
 async function run() {
 
@@ -8,10 +9,12 @@ async function run() {
         throw new Error("Workspace is empty. Did you forget to run \"actions/checkout\" before running this Github Action?");
     }
 
-    const include = ActionUtils.getInputAsArray("include", { required: false });
-    const exclude = ActionUtils.getInputAsArray("exclude", { required: false });
-    const find = ActionUtils.getInput("find", { required: true });
-    const replace = ActionUtils.getInput("replace", { required: true });
+    let include = ActionUtils.getInputAsArray("include", { required: false });
+    let exclude = ActionUtils.getInputAsArray("exclude", { required: false });
+    let find = ActionUtils.getInput("find", { required: true });
+    let replace = ActionUtils.getInput("replace", { required: true });
+
+    exclude = ArrayUtils.split(exclude, ",");
 
     core.info(`include: ${include}`);
     core.info(`exclude: ${JSON.stringify(exclude)}`);

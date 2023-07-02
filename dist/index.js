@@ -3684,7 +3684,7 @@ module.exports = class ActionUtils {
 
     static getInputAsArray(name, options) {
 
-        return core
+        return ActionUtils
             .getInput(name, options)
             .split("\n")
             .map(s => s.trim())
@@ -3700,6 +3700,33 @@ module.exports = class ActionUtils {
         }
 
         return input;
+    }
+}
+
+/***/ }),
+
+/***/ 1970:
+/***/ ((module) => {
+
+module.exports = class ArrayUtils {
+
+    static split(array, separator = ",") {
+
+        let result = [];
+
+        array.forEach(e => {
+            result = [...result, ...ArrayUtils.splitFromString(e, separator)];
+        });
+
+        return result;
+    }
+
+    static splitFromString(str, separator = ",") {
+
+        return str
+            .split(separator)
+            .map(s => s.trim())
+            .filter(x => x !== "");
     }
 }
 
@@ -10601,6 +10628,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(2186);
 const FileUtils = __nccwpck_require__(4056);
 const ActionUtils = __nccwpck_require__(778);
+const ArrayUtils = __nccwpck_require__(1970);
 
 async function run() {
 
@@ -10608,10 +10636,12 @@ async function run() {
         throw new Error("Workspace is empty. Did you forget to run \"actions/checkout\" before running this Github Action?");
     }
 
-    const include = ActionUtils.getInputAsArray("include", { required: false });
-    const exclude = ActionUtils.getInputAsArray("exclude", { required: false });
-    const find = ActionUtils.getInput("find", { required: true });
-    const replace = ActionUtils.getInput("replace", { required: true });
+    let include = ActionUtils.getInputAsArray("include", { required: false });
+    let exclude = ActionUtils.getInputAsArray("exclude", { required: false });
+    let find = ActionUtils.getInput("find", { required: true });
+    let replace = ActionUtils.getInput("replace", { required: true });
+
+    exclude = ArrayUtils.split(exclude, ",");
 
     core.info(`include: ${include}`);
     core.info(`exclude: ${JSON.stringify(exclude)}`);
