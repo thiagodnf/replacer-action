@@ -22,8 +22,8 @@ jobs:
         uses: thiagodnf/version-monitor@main
         with:
           file: ./package.json
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: echo ${{steps.version-monitor.outputs.version}}
       - run: echo ${{steps.version-monitor.outputs.release}}
