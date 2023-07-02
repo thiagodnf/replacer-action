@@ -24,9 +24,7 @@ jobs:
           configurationFile: ./package.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Show version number
-        run: echo "${{ steps.releaser.outputs.currentVersion }}"
+          
 
       - name: Creating a new release on Github
         uses: softprops/action-gh-release@v1
