@@ -8,8 +8,8 @@ async function run() {
         throw new Error("Workspace is empty. Did you forget to run \"actions/checkout\" before running this Github Action?");
     }
 
-    const include = ActionUtils.getInput("include", { required: false });
-    const exclude = ActionUtils.getInput("exclude", { required: false });
+    const include = ActionUtils.getInputAsArray("include", { required: false });
+    const exclude = ActionUtils.getInputAsArray("exclude", { required: false });
     const find = ActionUtils.getInput("find", { required: true });
     const replace = ActionUtils.getInput("replace", { required: true });
 

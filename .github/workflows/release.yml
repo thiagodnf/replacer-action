@@ -21,3 +21,6 @@ jobs:
         with:
           find: bar
           replace: foo
+          exclude: |
+            .git/**
+            node_modules/**
