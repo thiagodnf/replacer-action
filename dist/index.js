@@ -10656,11 +10656,8 @@ async function run() {
             modifiedFiles++;
         }
 
-        core.info(`content: ${newContent}`);
-
         FileUtils.writeContent(file, newContent);
     });
-    core.info(`modifiedFiles: ${modifiedFiles}`);
 
     core.info("Done. All files checked");
 

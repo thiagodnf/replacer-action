@@ -49,6 +49,11 @@ jobs:
         with:
           find: "hello"
           replace: "world"
+          include: |
+            test/**/*.md
+          exclude: |
+            .git/**
+            node_modules/**
 ```
 
 ## Questions or Suggestions
