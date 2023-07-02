@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: thiagodnf/releaser-action@main
+    - uses: thiagodnf/replacer-action@main
       with:
         find: bar
         replace: foo
