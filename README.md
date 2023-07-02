@@ -1,4 +1,4 @@
-<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/114015/250370332-b5b91b72-882d-489e-8d11-7d93f0d01c9a.png" width="600"/>
+<img src="https://github.com/thiagodnf/replacer-github-action/assets/114015/a8be14ad-7bfb-4db3-9a41-ecce82500178" width="600"/>
 
 A GitHub Action for finding and replacing strings in your project files
 
