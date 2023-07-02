@@ -10649,6 +10649,8 @@ async function run() {
     let include = ActionUtils.getInputAsArray("include", { required: false });
     let exclude = ActionUtils.getInputAsArray("exclude", { required: false });
 
+    find = new RegExp(find);
+    replace = new RegExp(replace);
     include = ArrayUtils.split(include, ",");
     exclude = ArrayUtils.split(exclude, ",");
 
@@ -10672,7 +10674,7 @@ async function run() {
         content = content.replace(find, replace);
 
         core.info(`content: ${content}`);
-        
+
         FileUtils.writeContent(file, content);
     });
 
