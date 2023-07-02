@@ -21,7 +21,7 @@ module.exports = class FileUtils {
         return fs.existsSync(fileOrPath);
     }
 
-    static loadFiles(array) {
+    static loadFiles(array = []) {
 
         core.debug("Loading all files");
 
