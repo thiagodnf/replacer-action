@@ -22,5 +22,5 @@ jobs:
           find: bar
           replace: foo
           exclude: |
-            .git/**
+            .git/**, README.md
             node_modules/**
