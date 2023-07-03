@@ -27,8 +27,8 @@ jobs:
       - name: String Replacer
         uses: thiagodnf/string-replacer@main
         with:
-          find: thiagodnf\/string-replacer@v${{ steps.version-decider.outputs.release }}
-          replace: thiagodnf\/string-replacer@v${{ steps.version-decider.outputs.version }}
+          find: ${{ format('thiagodnf/string-replacer@v{0}', steps.version-decider.outputs.release) }}
+          replace: ${{ format('thiagodnf/string-replacer@v{0}', steps.version-decider.outputs.version) }}
           include: |
             **/README.md
 
