@@ -24,6 +24,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: String Replacer
+        uses: thiagodnf/string-replacer@main
+        with:
+          find: thiagodnf\/string-replacer@v${{ steps.version-decider.outputs.release }}
+          replace: thiagodnf\/string-replacer@v${{ steps.version-decider.outputs.version }}
+          include: |
+            **/README.md
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+
       - name: Creating a new release on Github
         uses: softprops/action-gh-release@v1
         if: steps.version-decider.outputs.new
