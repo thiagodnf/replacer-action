@@ -45,7 +45,7 @@ jobs:
       - uses: actions/checkout@main
      
       - name: Find and Replace
-        uses: thiagodnf/string-replacer@v1.0.1
+        uses: thiagodnf/string-replacer@v1.0.2
         with:
           find: "hello"
           replace: "world"
