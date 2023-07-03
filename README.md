@@ -1,10 +1,10 @@
-<img src="https://github.com/thiagodnf/string-replacer/assets/114015/9bce8096-e40c-430e-a908-8861f671886b" width="600"/>
+# String Replacer
 
 A GitHub Action for finding and replacing strings in your project files
 
-[![GitHub Release](https://img.shields.io/github/release/thiagodnf/replacer-action.svg)](https://github.com/thiagodnf/replacer-action/releases/latest)
-[![GitHub contributors](https://img.shields.io/github/contributors/thiagodnf/replacer-action.svg)](https://github.com/thiagodnf/replacer-action/graphs/contributors)
-[![GitHub stars](https://img.shields.io/github/stars/thiagodnf/replacer-action.svg)](https://github.com/thiagodnf/replacer-action)
+[![GitHub Release](https://img.shields.io/github/release/thiagodnf/string-replacer.svg)](https://github.com/thiagodnf/string-replacer/releases/latest)
+[![GitHub contributors](https://img.shields.io/github/contributors/thiagodnf/string-replacer.svg)](https://github.com/thiagodnf/string-replacer/graphs/contributors)
+[![GitHub stars](https://img.shields.io/github/stars/thiagodnf/string-replacer.svg)](https://github.com/thiagodnf/string-replacer)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
