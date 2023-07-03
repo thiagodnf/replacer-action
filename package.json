@@ -1,6 +1,6 @@
 {
   "name": "string-replacer",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "author": "Thiago Ferreira",
   "license": "MIT",
   "description": "A GitHub Action for finding and replacing strings in your project files",
